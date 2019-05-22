@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node {
+	int data;
+	struct node *next;
+	
+};
+struct node *head=NULL; // GLOBAL HEAD
+void print(struct node *p)
+{
+	struct node *temp=p;
+	printf("\n");
+	while(temp)
+	{
+		printf("%d->",temp->data);
+		temp=temp->next;
+	}
+}
+
+struct node*  reverse(struct node* rev,struct node* cur){
+	
+
+	if(cur)
+	{
+		reverse(cur,cur->next);
+		cur->next=rev;
+		
+	}
+	else{
+		head=rev;
+		    
+	}
+	return head;
+}
+int main()
+{
+	head=newnode(1);
+	head->next=newnode(2);
+	head->next->next=newnode(3);
+	head->next->next->next=newnode(4);
+	head->next->next->next->next=newnode(5);
+	print(head);
+	
+	struct node *headnew=reverse(NULL,head);
+	print (headnew);
+	
+	}
